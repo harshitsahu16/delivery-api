@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from itertools import permutations
+import os
 
 app = Flask(__name__)
 
@@ -59,4 +60,5 @@ def calculate_cost():
     return jsonify({"minimum_cost": cost})
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
